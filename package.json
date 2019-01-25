@@ -2,7 +2,10 @@
 	"name": "sprint-challenge-ajax",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server.js",
+  "main": "server.js",
+  "engines": {
+    "yarn": "1.x"
+  },
 	"scripts": {
 		"client-install": "npm install --prefix village",
 		"start": "node server.js",
