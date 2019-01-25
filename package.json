@@ -4,7 +4,7 @@
 	"description": "",
   "main": "server.js",
   "engines": {
-    "yarn": "1.x"
+    "yarn": "1.12.3"
   },
 	"scripts": {
 		"client-install": "npm install --prefix village",
