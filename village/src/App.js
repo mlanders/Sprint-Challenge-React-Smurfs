@@ -26,7 +26,7 @@ class App extends Component {
 
 	componentDidMount() {
 		axios
-			.get('http://localhost:3333/smurfs')
+			.get('/smurfs')
 			.then(res => {
 				// console.log(res.data);
 				this.setState({ smurfs: res.data });
@@ -53,7 +53,7 @@ class App extends Component {
 		e.preventDefault();
 		// add code to create the smurf using the api
 		axios
-			.post('http://localhost:3333/smurfs', this.state.smurf)
+			.post('/smurfs', this.state.smurf)
 			.then(res => {
 				console.log(res);
 				this.setState(
@@ -82,7 +82,7 @@ class App extends Component {
 	handleDelete = (e, id) => {
 		e.preventDefault();
 		axios
-			.delete(`http://localhost:3333/smurfs/${id}`)
+			.delete(`/smurfs/${id}`)
 			.then(res => {
 				console.log(res);
 				this.setState({
@@ -111,7 +111,7 @@ class App extends Component {
 		let id = this.state.smurf.id;
 		console.log(id);
 		axios
-			.put(`http://localhost.com/333/smurfs/${id}`, this.state.smurf)
+			.put(`/smurfs/${id}`, this.state.smurf)
 			.then(res => {
 				console.log(res.data);
 				this.setState(
