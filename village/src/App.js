@@ -14,6 +14,7 @@ class App extends Component {
 		this.state = {
 			smurfs: [],
 			isUpdate: false,
+			err: '',
 			smurf: {
 				id: '',
 				name: '',
@@ -30,7 +31,10 @@ class App extends Component {
 				// console.log(res.data);
 				this.setState({ smurfs: res.data });
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				this.setState({ err: err });
+			});
 	}
 
 	reset() {
@@ -60,7 +64,10 @@ class App extends Component {
 					this.props.history.push('/')
 				);
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				this.setState({ err: err });
+			});
 	};
 
 	handleInputChange = e => {
@@ -83,7 +90,10 @@ class App extends Component {
 				});
 				this.props.history.push('/');
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				this.setState({ err: err });
+			});
 	};
 
 	handleEdit = (e, smurf) => {
@@ -118,7 +128,10 @@ class App extends Component {
 					this.props.history.push('/')
 				);
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				this.setState({ err: err });
+			});
 	};
 
 	render() {
