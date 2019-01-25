@@ -4,12 +4,7 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"client-install": "npm install --prefix village",
-		"start": "node server.js",
-		"server": "nodemon server.js",
-		"client": "npm start --prefix village",
-		"dev": "concurrently \"npm run server\" \"npm run village\"",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix village && npm run build --prefix village"
+		"start": "node server.js"
 	},
 	"author": "",
 	"license": "ISC",
