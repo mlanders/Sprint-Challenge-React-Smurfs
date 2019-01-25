@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import {
-	Navbar,
-	NavbarBrand,
-	NavbarToggler,
-	Collapse,
-	Nav,
-	NavItem,
-} from 'reactstrap';
+import { Navbar, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
 
 import './App.css';
 import SmurfForm from './components/SmurfForm';
@@ -40,22 +33,34 @@ class App extends Component {
 			.catch(err => console.log(err));
 	}
 
+	reset() {
+		this.setState({
+			isUpdate: false,
+			smurf: {
+				id: '',
+				name: '',
+				age: '',
+				height: '',
+			},
+		});
+	}
+
 	addSmurf = e => {
 		e.preventDefault();
 		// add code to create the smurf using the api
 		axios
 			.post('http://localhost:3333/smurfs', this.state.smurf)
 			.then(res => {
-				console.log(res),
-					this.setState(
-						{ smurfs: res.data },
-						this.props.history.push('/')
-					);
-			});
-
-		this.setState({
-			smurf: { name: '', age: '', height: '' },
-		});
+				console.log(res);
+				this.setState(
+					{
+						smurfs: res.data,
+						smurf: { name: '', age: '', height: '' },
+					},
+					this.props.history.push('/')
+				);
+			})
+			.catch(err => console.log(err));
 	};
 
 	handleInputChange = e => {
@@ -88,17 +93,17 @@ class App extends Component {
 				smurf: smurf,
 				isUpdate: true,
 			},
-			this.props.history.push('/add')
+			this.props.history.push('/smurf-form')
 		);
 	};
 
-	handlePut = e => {
-		e.preventDefault();
+	handlePut = () => {
 		let id = this.state.smurf.id;
+		console.log(id);
 		axios
 			.put(`http://localhost.com/333/smurfs/${id}`, this.state.smurf)
 			.then(res => {
-				console.log(res);
+				console.log(res.data);
 				this.setState(
 					{
 						smurfs: res.data,
@@ -120,17 +125,28 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Navbar color="light" light expand="md">
-					<NavbarBrand>
-						<Link to="/">Smurf Village</Link>
-					</NavbarBrand>
+					<Link
+						className="NavBrand"
+						to="/"
+						onClick={() => this.reset()}>
+						Smurf Village
+					</Link>
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem>
-								<NavLink exact className="NavLink" to="/">
+								<NavLink
+									exact
+									className="NavLink"
+									to="/"
+									onClick={() => this.reset()}>
 									Home
 								</NavLink>
-								<NavLink exact className="NavLink" to="/add">
+								<NavLink
+									exact
+									className="NavLink"
+									to="/smurf-form"
+									onClick={() => this.reset()}>
 									Add Smurf
 								</NavLink>
 							</NavItem>
@@ -140,7 +156,7 @@ class App extends Component {
 
 				{this.state.error && <h4>{this.state.error}</h4>}
 				<Route
-					path="/add"
+					path="/smurf-form"
 					render={props => (
 						<React.Fragment>
 							<SmurfForm

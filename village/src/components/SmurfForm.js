@@ -3,6 +3,7 @@ import { Form, Input } from 'reactstrap';
 
 function SmurfForm(props) {
 	const submitButton = e => {
+		e.preventDefault();
 		if (props.isUpdate) {
 			props.handlePut(e);
 		} else {
