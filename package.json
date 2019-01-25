@@ -13,7 +13,7 @@
 		"server": "nodemon server.js",
 		"client": "npm start --prefix village",
 		"dev": "concurrently \"yarn run server\" \"yarn run village\"",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix village && npm run build --prefix village"
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --prefix village && yarn run build --prefix village"
 	},
 	"author": "",
 	"license": "ISC",
