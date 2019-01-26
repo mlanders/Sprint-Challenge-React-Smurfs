@@ -111,7 +111,7 @@ class App extends Component {
 		let id = this.state.smurf.id;
 		console.log(id);
 		axios
-			.put(`http://localhost.com/333/smurfs/${id}`, this.state.smurf)
+			.put(`http://localhost:3333/smurfs/${id}`, this.state.smurf)
 			.then(res => {
 				console.log(res.data);
 				this.setState(
