@@ -1,3 +1,44 @@
 .App {
-  text-align: center;
+	text-align: center;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+ul {
+	display: flex;
+	flex-direction: column;
+}
+.form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	background-color: darkgray;
+	padding: 15px 0;
+}
+.form-control {
+	width: 24%;
+}
+.Smurfs {
+	margin-top: 15px;
+}
+.active {
+	text-decoration: underline;
+}
+.NavLink {
+	margin-left: 10px;
+}
+.smurfButton {
+	margin: 5px;
+}
+.NavBrand {
+	display: inline-block;
+	padding-top: 0.3125rem;
+	padding-bottom: 0.3125rem;
+	margin-right: 1rem;
+	font-size: 1.25rem;
+	line-height: inherit;
+	white-space: nowrap;
 }
